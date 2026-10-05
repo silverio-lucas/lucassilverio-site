@@ -26,7 +26,7 @@ const steps = [
   {
     number: "05",
     title: "Publicação",
-    description: "Publico e configuro todas as integrações e a medição",
+    description: "Publico o site, configuro a medição e, se contratado, ativo as campanhas",
   },
 ]
 

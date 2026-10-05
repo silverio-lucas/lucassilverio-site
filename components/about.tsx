@@ -25,14 +25,21 @@ export function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 flex flex-col items-center text-center"
         >
-          {/* Photo placeholder */}
-          <div className="h-32 w-32 rounded-full border-2 border-border bg-secondary/50" />
+          <img
+            src="/lucas-silverio-avatar.webp"
+            alt="Retrato de Lucas Silvério, de blusa preta de gola alta"
+            width={128}
+            height={128}
+            loading="lazy"
+            decoding="async"
+            className="h-32 w-32 rounded-full border-2 border-border object-cover"
+          />
           
           <h3 className="mt-6 text-xl font-semibold text-foreground">Lucas Silvério</h3>
           <p className="mt-1 text-sm text-accent">Product Designer e desenvolvedor web</p>
           
           <p className="mt-6 max-w-lg text-pretty leading-relaxed text-muted-foreground">
-            Desenho e programo cada projeto, unindo estratégia, UX, design e desenvolvimento para que o site trabalhe pelo seu negócio. Atendo o Vale do Aço e todo o Brasil, de forma remota.
+            Desenho e programo cada projeto, unindo estratégia, UX, design e desenvolvimento para que o site trabalhe pelo seu negócio. Quando você precisa de anúncios, conduzo as campanhas também. Atendo o Vale do Aço e todo o Brasil, de forma remota.
           </p>
         </motion.div>
       </div>

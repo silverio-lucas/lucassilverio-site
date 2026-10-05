@@ -8,7 +8,7 @@ const niches = [
   { icon: User, name: "Profissionais liberais", description: "Consultórios, escritórios e autônomos" },
   { icon: Store, name: "Comércios e negócios locais", description: "Lojas, estúdios e franquias" },
   { icon: Sparkles, name: "Marcas pessoais", description: "Consultores, especialistas e criadores" },
-  { icon: Megaphone, name: "Empresas com anúncios", description: "Que precisam de páginas para campanhas" },
+  { icon: Megaphone, name: "Empresas que anunciam", description: "Páginas e campanhas trabalhando juntas" },
 ]
 
 export function Niches() {

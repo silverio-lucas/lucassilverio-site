@@ -23,7 +23,7 @@ export function CTA() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Vamos conversar sobre o seu site?
+            Vamos conversar sobre o seu projeto?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
             Me chame no WhatsApp ou simule seu orçamento agora. Sem compromisso.
