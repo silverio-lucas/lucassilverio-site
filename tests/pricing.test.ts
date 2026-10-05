@@ -72,3 +72,13 @@ test('landing-only options stay isolated and CRM avoids duplicate lead storage',
  assert.ok(!summary.includes('Supabase'));assert.ok(!summary.includes('Google Meu Negócio'));
  assert.match(summary,/duas rodadas/i);assert.match(summary,/Textos e imagens fornecidos pelo cliente/);
 });
+
+test('traffic scope states who produces the creatives and matches the monthly count', () => {
+  const none = calculateQuote({projectType:'trafego'});
+  assert.ok(none.scope.includes('Criativos (imagens e vídeos) fornecidos por você'));
+  assert.ok(!none.scope.some(item => item.includes('orçados à parte')));
+  assert.ok(calculateQuote({projectType:'trafego',trafficCreatives:1}).scope.includes('1 criativo produzido por mim a cada mês'));
+  const three = calculateQuote({projectType:'trafego',trafficCreatives:3});
+  assert.ok(three.scope.includes('3 criativos produzidos por mim a cada mês'));
+  assert.equal(three.creativesCost, 900);
+});

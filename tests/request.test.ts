@@ -21,3 +21,11 @@ test('client request combines contact details with current quote and selected sc
   assert.equal(normalizeClient({name:'Ana\nSilva'}).name,'Ana Silva');
   assert.equal(normalizeClient({notes:'x'.repeat(1200)}).notes.length,1000);
 });
+
+test('request without company names the project after the selected type', () => {
+  const client = {name:'Ana Silva',contact:'cliente@example.com'};
+  assert.match(buildRequest({projectType:'trafego'}, client), /Projeto: Gestão de tráfego para meu negócio/);
+  assert.match(buildRequest({projectType:'landing'}, client), /Projeto: Landing page para meu negócio/);
+  assert.match(buildRequest({projectType:'site'}, client), /Projeto: Site para meu negócio/);
+  assert.ok(!buildRequest({projectType:'trafego'}, client).includes('Site para meu negócio'));
+});
