@@ -21,9 +21,9 @@ export function getWhatsAppNumber() {
 export const SITE_URL = "https://www.lucassilverio.dev"
 
 export const seo = {
-  title: "Lucas Silvério — Posicionamento Digital | Sites e landing pages",
+  title: "Lucas Silvério — Posicionamento Digital | Sites, landing pages e tráfego",
   description:
-    "Sites institucionais e landing pages rápidos, com WhatsApp integrado e medição. Landing pages a partir de R$ 1.200 e sites a partir de R$ 2.000.",
+    "Sites, landing pages e gestão de tráfego para negócios locais. Landing pages a partir de R$ 1.200, sites a partir de R$ 2.000 e tráfego a partir de R$ 1.000/mês.",
 }
 
 // Injetado em app/layout.tsx como JSON-LD
@@ -43,5 +43,16 @@ export const professionalServiceSchema = {
   makesOffer: [
     { "@type": "Offer", name: "Landing page", priceCurrency: "BRL", price: "1200" },
     { "@type": "Offer", name: "Site institucional", priceCurrency: "BRL", price: "2000" },
+    {
+      "@type": "Offer",
+      name: "Gestão de tráfego para negócios locais",
+      priceCurrency: "BRL",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        priceCurrency: "BRL",
+        price: "1000",
+        unitText: "MONTH",
+      },
+    },
   ],
 }

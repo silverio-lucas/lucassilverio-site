@@ -193,7 +193,9 @@ export function calculateQuote(input: unknown) {
       `Objetivo: ${goalLabel}`,
       "Estruturação de campanhas, públicos e acompanhamento",
       "Relatório mensal com o que foi investido e o que voltou",
-      "Criativos (imagens e vídeos) fornecidos por você ou orçados à parte",
+      state.trafficCreatives > 0
+        ? `${state.trafficCreatives} ${state.trafficCreatives === 1 ? "criativo produzido" : "criativos produzidos"} por mim a cada mês`
+        : "Criativos (imagens e vídeos) fornecidos por você",
       ...(state.trafficPage === "landing" ? ["Landing page para receber os anúncios"] : []),
       ...(state.trafficPage === "site" ? ["Site institucional para receber os anúncios"] : []),
       ...(state.hasGoogleProfile ? [] : ["Perfil da Empresa no Google a configurar"]),
