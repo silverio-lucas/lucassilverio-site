@@ -44,7 +44,7 @@ export function Hero() {
             </h1>
             
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-              Sou Lucas Silvério. Crio sites institucionais e landing pages com WhatsApp e medição configurados desde o primeiro dia e, quando o negócio pede, cuido do tráfego pago para levar clientes até eles.
+              Sou Lucas Silvério, web designer e gestor de tráfego. Cuido do posicionamento digital do seu negócio: crio o site ou a landing page, com WhatsApp e medição desde o primeiro dia, e administro os anúncios que levam clientes até a sua página.
             </p>
 
             <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground/80">
