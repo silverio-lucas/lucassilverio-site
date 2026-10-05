@@ -58,6 +58,12 @@ const OBJECTIVES = [
 ]
 const TIMELINES = ["Assim que possível", "Até 30 dias", "De 1 a 3 meses", "Sem data definida"]
 
+// A aba "Site" reúne os dois formatos. O cálculo continua separado por tipo (site ou landing).
+const SITE_FORMATS = [
+  { value: "site", name: "Site institucional", price: PRICES.base, help: "Apresenta a empresa, os serviços e os canais de contato." },
+  { value: "landing", name: "Landing page", price: PRICES.landingPage, help: "Uma oferta ou campanha, com uma ação principal." },
+] as const
+
 const selectClass =
   "border-input dark:bg-input/30 h-9 w-full rounded-md border bg-transparent px-3 text-base shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:border-destructive md:text-sm [&>option]:bg-background"
 
@@ -194,10 +200,16 @@ export function BudgetSimulator() {
   const sectionRef = useRef<HTMLElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
   const summaryRef = useRef<HTMLTextAreaElement>(null)
+  // Ao voltar de "Gestão de tráfego" para "Site", reabre o formato que a pessoa já tinha escolhido.
+  const siteFormat = useRef<"site" | "landing">("site")
 
   const quote = useMemo(() => calculateQuote(state), [state])
   const landing = state.projectType === "landing"
   const trafego = state.projectType === "trafego"
+
+  useEffect(() => {
+    if (state.projectType !== "trafego") siteFormat.current = state.projectType
+  }, [state.projectType])
 
   // Lê o rascunho salvo só depois de montar, para não divergir do HTML gerado no servidor.
   useEffect(() => {
@@ -238,7 +250,7 @@ export function BudgetSimulator() {
 
   const patch = (changes: Partial<QuoteState>) => setState((current) => normalizeState({ ...current, ...changes }))
 
-  // A seção de serviços pré-seleciona o tipo de projeto (site, landing page ou tráfego).
+  // A seção de serviços pré-seleciona o tipo: "site" e "landing" abrem a aba Site já no formato certo.
   useEffect(() => {
     const onType = (event: Event) => {
       const type = (event as CustomEvent<string>).detail
@@ -345,25 +357,21 @@ export function BudgetSimulator() {
           <div className="space-y-4">
             <div className="flex items-end justify-between gap-4">
               <Tabs
-                value={state.projectType}
+                value={trafego ? "trafego" : "site"}
                 onValueChange={(value) => {
-                  patch({ projectType: value as ProjectType })
+                  patch({ projectType: value === "trafego" ? "trafego" : siteFormat.current })
                   track("simulador_tipo", { tipo: value })
                 }}
                 className="flex-1"
               >
-                <TabsList className="grid h-auto w-full grid-cols-1 gap-1 p-1 sm:grid-cols-3" aria-label="Tipo de projeto">
+                <TabsList className="grid h-auto w-full grid-cols-1 gap-1 p-1 sm:grid-cols-2" aria-label="Tipo de projeto">
                   <TabsTrigger value="site" className="flex-col items-start gap-0.5 px-4 py-3 text-left">
-                    <span>Site institucional</span>
-                    <small className="text-xs font-normal text-muted-foreground">A partir de {formatBRL(PRICES.base)}</small>
-                  </TabsTrigger>
-                  <TabsTrigger value="landing" className="flex-col items-start gap-0.5 px-4 py-3 text-left">
-                    <span>Landing page</span>
-                    <small className="text-xs font-normal text-muted-foreground">A partir de {formatBRL(PRICES.landingPage)}</small>
+                    <span>Site</span>
+                    <small className="text-xs font-normal text-muted-foreground">Institucional ou landing page</small>
                   </TabsTrigger>
                   <TabsTrigger value="trafego" className="flex-col items-start gap-0.5 px-4 py-3 text-left">
                     <span>Gestão de tráfego</span>
-                    <small className="text-xs font-normal text-muted-foreground">A partir de {formatBRL(PRICES.trafficSingle)}/mês</small>
+                    <small className="text-xs font-normal text-muted-foreground">Anúncios, a partir de {formatBRL(PRICES.trafficSingle)}/mês</small>
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
@@ -372,6 +380,37 @@ export function BudgetSimulator() {
                 Recomeçar
               </Button>
             </div>
+
+            {!trafego && (
+              <fieldset>
+                <legend className="sr-only">Formato do projeto</legend>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {SITE_FORMATS.map((format) => {
+                    const selected = state.projectType === format.value
+                    return (
+                      <button
+                        key={format.value}
+                        type="button"
+                        aria-pressed={selected}
+                        onClick={() => {
+                          patch({ projectType: format.value })
+                          track("simulador_formato", { formato: format.value })
+                        }}
+                        className={`rounded-lg border p-4 text-left transition-colors ${
+                          selected ? "border-accent/50 bg-accent/5" : "border-border bg-secondary/30 hover:bg-secondary/60"
+                        }`}
+                      >
+                        <span className="flex items-baseline justify-between gap-3">
+                          <span className="text-sm font-medium text-foreground">{format.name}</span>
+                          <span className="shrink-0 text-xs text-muted-foreground">a partir de {formatBRL(format.price)}</span>
+                        </span>
+                        <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{format.help}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </fieldset>
+            )}
 
             <Card selected>
               <CardHead
@@ -885,7 +924,7 @@ export function BudgetSimulator() {
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="client-notes">Conte um pouco sobre o projeto <span className="text-xs font-normal text-muted-foreground">opcional</span></Label>
-                  <Textarea id="client-notes" maxLength={1000} rows={3} placeholder="O que você gostaria de alcançar com o novo site?" value={client.notes} onChange={(e) => setField("notes", e.target.value)} />
+                  <Textarea id="client-notes" maxLength={1000} rows={3} placeholder={trafego ? "O que você gostaria de alcançar com os anúncios?" : landing ? "O que você gostaria de alcançar com a landing page?" : "O que você gostaria de alcançar com o novo site?"} value={client.notes} onChange={(e) => setField("notes", e.target.value)} />
                 </div>
                 <p className="text-xs leading-relaxed text-muted-foreground">Seus dados entram no pedido que você revisa e escolhe enviar. Nada é enviado automaticamente.</p>
                 <Button type="submit" size="lg" className="w-full">
