@@ -33,6 +33,13 @@ export function isValidContact(value: unknown): boolean {
   return /^[+\d\s().-]+$/.test(contact) && digits.length >= 10 && digits.length <= 15
 }
 
+// Nome do projeto quando o cliente não informa a empresa: acompanha o tipo escolhido no simulador.
+function fallbackProjectName(projectType: unknown): string {
+  if (projectType === "landing") return "Landing page para meu negócio"
+  if (projectType === "trafego") return "Gestão de tráfego para meu negócio"
+  return "Site para meu negócio"
+}
+
 export function buildRequest(config: unknown, input: ClientInput): string {
   const client = normalizeClient(input)
   if (client.name.length < 2 || !isValidContact(client.contact)) throw new Error("Informe nome e contato válidos.")
@@ -51,7 +58,7 @@ export function buildRequest(config: unknown, input: ClientInput): string {
       objective: client.objective,
       segment: client.segment,
       timeline: client.timeline,
-      projectName: client.company || (base.projectType === "landing" ? "Landing page para meu negócio" : "Site para meu negócio"),
+      projectName: client.company || fallbackProjectName(base.projectType),
     }),
     "",
     "Este é um pedido de proposta, sem contratação ou cobrança automática.",

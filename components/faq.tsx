@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { PRICES, TRAFFIC_MIN_MONTHS, formatBRL } from "@/lib/pricing"
 
 const faqs = [
   {
@@ -15,7 +16,7 @@ const faqs = [
   },
   {
     question: "Quanto tempo leva para criar um site?",
-    answer: "O prazo médio é de 2 a 4 semanas, dependendo da complexidade do projeto e da rapidez no envio dos materiais necessários. Sites mais simples podem ficar prontos em menos tempo.",
+    answer: "Sites e landing pages ficam prontos em até 10 dias úteis. O prazo começa a contar quando o briefing está fechado e eu recebo os textos e as imagens, e pode variar com o número de páginas, as integrações e a rapidez das aprovações. A data fica definida na proposta.",
   },
   {
     question: "Você faz sites em WordPress?",
@@ -36,6 +37,14 @@ const faqs = [
   {
     question: "O site será otimizado para Google?",
     answer: "Todo site sai com SEO técnico: velocidade otimizada, estrutura semântica, meta tags e sitemap. Para buscas locais, posso configurar também o Google Meu Negócio.",
+  },
+  {
+    question: "Como funciona a gestão de tráfego?",
+    answer: `Eu estruturo e administro as suas campanhas no Meta, no Google ou nos dois, conforme o seu negócio, o seu objetivo e a verba disponível, e envio um relatório mensal. A gestão parte de ${formatBRL(PRICES.trafficSingle)} por mês com um canal e de ${formatBRL(PRICES.trafficCombined)} com Meta e Google. A verba dos anúncios vai direto para as plataformas e não entra na mensalidade. Os criativos podem ser enviados por você ou produzidos por mim, a ${formatBRL(PRICES.trafficCreative)} cada.`,
+  },
+  {
+    question: "A gestão de tráfego tem prazo mínimo? Você garante resultados?",
+    answer: `O compromisso mínimo é de ${TRAFFIC_MIN_MONTHS} meses, porque as campanhas precisam de tempo de aprendizado para dar resultado. Não prometo número de vendas ou de contatos: o resultado depende da oferta, da verba, do mercado e da capacidade de atendimento do negócio.`,
   },
 ]
 

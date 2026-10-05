@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Zap, MessageCircle, BarChart3, Headphones } from "lucide-react"
+import { ArrowRight, Zap, MessageCircle, BarChart3, Megaphone } from "lucide-react"
 import Link from "next/link"
+import { PRICES, formatBRL } from "@/lib/pricing"
 
 const projectSteps = [
   { status: "complete", text: "Planejamento", color: "bg-emerald-400" },
@@ -16,8 +17,8 @@ const projectSteps = [
 const socialProof = [
   { icon: Zap, text: "Sites rápidos" },
   { icon: MessageCircle, text: "WhatsApp integrado" },
-  { icon: BarChart3, text: "Estrutura escalável" },
-  { icon: Headphones, text: "Medição incluída" },
+  { icon: BarChart3, text: "Medição desde o primeiro dia" },
+  { icon: Megaphone, text: "Gestão de tráfego" },
 ]
 
 export function Hero() {
@@ -39,11 +40,15 @@ export function Hero() {
             className="flex flex-col"
           >
             <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Sites que passam confiança e trazem clientes para o seu negócio
+              Seu site precisa deixar claro por que escolher sua empresa
             </h1>
             
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-              Sou Lucas Silvério. Crio sites institucionais e landing pages rápidos, com WhatsApp integrado e medição desde o primeiro dia. Landing pages a partir de R$ 1.200 e sites a partir de R$ 2.000.
+              Sou Lucas Silvério. Crio sites institucionais e landing pages com WhatsApp e medição configurados desde o primeiro dia e, quando o negócio pede, cuido do tráfego pago para levar clientes até eles.
+            </p>
+
+            <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground/80">
+              Landing pages a partir de {formatBRL(PRICES.landingPage)}, sites a partir de {formatBRL(PRICES.base)} e gestão de tráfego a partir de {formatBRL(PRICES.trafficSingle)} por mês.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -54,7 +59,7 @@ export function Hero() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link href="#processo">Ver processo</Link>
+                <Link href="#planos">Ver serviços</Link>
               </Button>
             </div>
           </motion.div>
@@ -67,23 +72,18 @@ export function Hero() {
             className="relative mx-auto w-full max-w-sm sm:max-w-md lg:ml-auto lg:mr-0"
           >
             <div className="relative overflow-hidden rounded-2xl border border-border bg-card/50">
-              {/* AVIF (mais leve e mais fiel na textura) com WebP de reserva. 960 px cobre telas comuns; 1440 px, as de alta densidade. */}
-              <picture>
-                <source
-                  type="image/avif"
-                  srcSet="/lucas-silverio-960.avif 960w, /lucas-silverio-1440.avif 1440w"
-                  sizes="(min-width: 1024px) 480px, (min-width: 640px) 448px, 384px"
-                />
-                <img
-                  src="/lucas-silverio-960.webp"
-                  alt="Lucas Silvério sentado em um sofá claro, de blusa preta de gola alta, olhando para a câmera"
-                  width={960}
-                  height={1200}
-                  fetchPriority="high"
-                  decoding="async"
-                  className="h-auto w-full"
-                />
-              </picture>
+              {/* WebP em duas larguras: 960 px cobre telas comuns; 1440 px, as de alta densidade. */}
+              <img
+                src="/lucas-silverio-960.webp"
+                srcSet="/lucas-silverio-960.webp 960w, /lucas-silverio-1440.webp 1440w"
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 448px, 384px"
+                alt="Lucas Silvério sentado em um sofá claro, de blusa preta de gola alta, olhando para a câmera"
+                width={960}
+                height={1200}
+                fetchPriority="high"
+                decoding="async"
+                className="h-auto w-full"
+              />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
 
               {/* Projeto recente */}
