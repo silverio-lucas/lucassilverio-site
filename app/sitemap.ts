@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/site-content"
 
 // Páginas indexáveis. Ao criar uma página nova, inclua o caminho aqui.
-const SITEMAP_PATHS = ["", "/criacao-de-sites", "/landing-pages", "/gestao-de-trafego", "/orcamento", "/politica-de-privacidade"] as const
+const SITEMAP_PATHS = ["", "/criacao-de-sites", "/landing-pages", "/gestao-de-trafego", "/google-meu-negocio", "/orcamento", "/politica-de-privacidade"] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
