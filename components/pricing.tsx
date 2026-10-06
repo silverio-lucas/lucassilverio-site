@@ -161,17 +161,19 @@ export function Pricing() {
           </div>
         </TooltipProvider>
 
-        <p className="mt-10 text-center text-sm text-muted-foreground">
-          Para negócios locais, também faço a instalação e a gestão do{" "}
-          <Link
-            href="/google-meu-negocio"
-            onClick={() => track("servico_saiba_mais", { tipo: "gbp" })}
-            className="text-foreground underline underline-offset-4"
-          >
-            Perfil da Empresa no Google
-          </Link>
-          .
-        </p>
+        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card/30 p-6 sm:flex-row sm:items-center">
+          <div>
+            <h3 className="text-base font-semibold text-foreground">Perfil da Empresa no Google</h3>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Para negócios locais: instalação por {formatBRL(PRICES.googleBusiness)} e gestão mensal por {formatBRL(PRICES.googleBusinessMonthly)}.
+            </p>
+          </div>
+          <Button asChild variant="outline" className="shrink-0">
+            <Link href="/google-meu-negocio" onClick={() => track("servico_saiba_mais", { tipo: "gbp" })}>
+              Conhecer o serviço
+            </Link>
+          </Button>
+        </div>
 
         <motion.p
           initial={{ opacity: 0 }}
