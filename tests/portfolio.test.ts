@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readdirSync, readFileSync, statSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {join, relative} from 'node:path';
 import {PROJECTS, PORTFOLIO_URL} from '../lib/portfolio.ts';
 import {buildQuoteLine, buildSummary, calculateQuote, recommendTraffic} from '../lib/pricing.ts';
 
@@ -97,4 +100,24 @@ test('traffic quote line shows monthly and setup', () => {
   assert.equal(line({discovery: 'descoberta', adBudget: 1000}), 'Gestão de tráfego · a partir de R$ 2.000/mês');
   assert.equal(line({discovery: 'ambos', adBudget: 9000}), 'Gestão de tráfego · gestão sob orçamento');
   assert.equal(line({discovery: 'descoberta', adBudget: 1000, trafficPage: 'site'}), 'Gestão de tráfego · a partir de R$ 2.000/mês · + R$ 2.000 de entrada');
+});
+
+// Os endereços dos projetos vivem só em lib/portfolio.ts: hero, páginas de serviço e seção de portfólio leem de PROJECTS.
+test('project hosts are never typed outside lib/portfolio.ts', () => {
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const walk = (dir: string): string[] => readdirSync(dir).flatMap(name => {
+    const path = join(dir, name);
+    return statSync(path).isDirectory() ? walk(path) : [path];
+  }).filter(path => /\.tsx?$/.test(path));
+  const offenders: string[] = [];
+  for (const path of [...walk(join(root, 'app')), ...walk(join(root, 'components'))]) {
+    const text = readFileSync(path, 'utf8');
+    for (const project of PROJECTS) if (text.includes(project.host)) offenders.push(`${relative(root, path)}: ${project.host}`);
+  }
+  assert.deepEqual(offenders, []);
+});
+
+test('conceptual projects are flagged with a boolean and nothing else changes their shape', () => {
+  for (const project of PROJECTS) assert.ok(project.conceptual === undefined || typeof project.conceptual === 'boolean', project.id);
+  assert.ok(PROJECTS.some(project => project.id === 'clara-odontologia' && project.conceptual === true));
 });
