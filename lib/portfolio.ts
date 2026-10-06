@@ -9,17 +9,20 @@ export interface PortfolioProject {
   description: string
   url: string
   host: string
+  /** Projeto criado para demonstrar o trabalho, sem cliente real. É identificado como tal no site. */
+  conceptual?: boolean
 }
 
 export const PROJECTS: PortfolioProject[] = [
   {
-    id: "luana-queiroz",
-    name: "Luana Queiroz",
-    segment: "Copywriter e estrategista de SaaS",
-    type: "Site profissional",
+    id: "clara-odontologia",
+    name: "Clara Odontologia",
+    segment: "Clínica odontológica fictícia",
+    type: "Site institucional",
     description:
-      "Site para apresentar o trabalho e os serviços de uma copywriter, com chamadas diretas para conversar pelo WhatsApp.",
-    url: "https://luanacopywriter.com.br",
-    host: "luanacopywriter.com.br",
+      "Site conceitual de uma clínica odontológica, com tratamentos, o passo a passo da primeira visita, perguntas frequentes e agendamento demonstrativo.",
+    url: "https://clara-odontologia.vercel.app",
+    host: "clara-odontologia.vercel.app",
+    conceptual: true,
   },
 ]
