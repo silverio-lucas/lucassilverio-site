@@ -28,6 +28,7 @@ const services = [
       { text: "SEO básico", tooltip: "Otimizações técnicas iniciais para mecanismos de busca" },
     ],
     extras: `Opcionais: banco de dados (Supabase) e Google Meu Negócio, + ${formatBRL(PRICES.supabase)} cada.`,
+    learnMore: { href: "/criacao-de-sites", label: "Saiba o que está incluído." },
   },
   {
     type: "landing" as const,
@@ -42,6 +43,7 @@ const services = [
       { text: "Duas rodadas de ajustes", tooltip: null },
     ],
     extras: `Opcionais: página de agradecimento (+ ${formatBRL(PRICES.thankYou)}), CRM (a partir de ${formatBRL(PRICES.crm)}) e armazenamento de leads (+ ${formatBRL(PRICES.leadStorage)}).`,
+    learnMore: { href: "/landing-pages", label: "Saiba o que está incluído." },
   },
   {
     type: "trafego" as const,
