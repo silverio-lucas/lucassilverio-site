@@ -36,7 +36,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`${project.name}: ${project.type}. Abre ${project.host} em uma nova aba`}
+      aria-label={`${project.name}: ${project.type}${project.conceptual ? ", projeto conceitual" : ""}. Abre ${project.host} em uma nova aba`}
       onClick={() => track("portfolio_projeto", { projeto: project.id })}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +46,14 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
     >
       <Thumb host={project.host} />
       <div>
-        <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{project.type}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{project.type}</p>
+          {project.conceptual && (
+            <span className="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              Projeto conceitual
+            </span>
+          )}
+        </div>
         <h3 className="mt-2 text-xl font-semibold text-foreground">{project.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
       </div>
@@ -69,8 +76,8 @@ export function Portfolio() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Projetos que já saíram do papel</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Trabalhos entregues, com site no ar para você abrir e conferir</p>
+          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Projetos no ar</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Sites publicados para você abrir e conferir. Os projetos conceituais aparecem identificados como tal</p>
         </motion.div>
 
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">

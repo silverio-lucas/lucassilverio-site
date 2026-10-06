@@ -148,7 +148,7 @@ export function ServicePage({
         <section className="py-24">
           <div className="mx-auto max-w-3xl px-6">
             <div className="text-center">
-              <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Um projeto entregue</h2>
+              <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{project.conceptual ? "Um projeto conceitual" : "Um projeto entregue"}</h2>
             </div>
             <div className="mt-12 rounded-2xl border border-border bg-card/30 p-8">
               <p className="text-sm text-muted-foreground">
@@ -156,6 +156,11 @@ export function ServicePage({
               </p>
               <h3 className="mt-2 text-xl font-semibold text-foreground">{project.name}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+              {project.conceptual && (
+                <p className="mt-4 text-xs leading-relaxed text-muted-foreground/80">
+                  Projeto conceitual: a clínica é fictícia e o agendamento é demonstrativo.
+                </p>
+              )}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <TrackedButton href={project.url} event="portfolio_projeto" variant="outline" external params={{ projeto: project.id }}>
                   Ver o site {project.host}
