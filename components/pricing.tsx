@@ -161,12 +161,24 @@ export function Pricing() {
           </div>
         </TooltipProvider>
 
+        <p className="mt-10 text-center text-sm text-muted-foreground">
+          Para negócios locais, também faço a instalação e a gestão do{" "}
+          <Link
+            href="/google-meu-negocio"
+            onClick={() => track("servico_saiba_mais", { tipo: "gbp" })}
+            className="text-foreground underline underline-offset-4"
+          >
+            Perfil da Empresa no Google
+          </Link>
+          .
+        </p>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 text-center text-sm text-muted-foreground/70"
+          className="mt-4 text-center text-sm text-muted-foreground/70"
         >
           Valores de entrada. Cada projeto é analisado individualmente e recursos adicionais podem ser incluídos. Resultados de tráfego dependem de oferta, verba e mercado.
         </motion.p>

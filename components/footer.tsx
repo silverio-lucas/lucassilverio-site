@@ -23,6 +23,9 @@ export function Footer() {
             <Link href="/gestao-de-trafego" className="transition-colors hover:text-foreground">
               Gestão de tráfego
             </Link>
+            <Link href="/google-meu-negocio" className="transition-colors hover:text-foreground">
+              Google Meu Negócio
+            </Link>
             <Link href="/orcamento" className="transition-colors hover:text-foreground">
               Orçamento
             </Link>

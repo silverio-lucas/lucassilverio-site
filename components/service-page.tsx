@@ -24,10 +24,15 @@ export interface ServicePageProps {
   title: string
   intro: string
   priceLine: string
-  simulate: { href: string; event: string; label: string }
+  /** Sem simulador para o serviço, a página usa só o WhatsApp como chamada principal. */
+  simulate?: { href: string; event: string; label: string }
   whatsapp: { href: string; event: string }
   included: string[]
   optional: string[]
+  /** Títulos opcionais do bloco de listas (padrão: preço e custos à parte). */
+  listsHeading?: string
+  includedTitle?: string
+  optionalTitle?: string
   steps: Step[]
   stepsNote: string
   /** Mostra o projeto entregue. Só para serviços em que ele serve de prova. */
@@ -64,6 +69,9 @@ export function ServicePage({
   whatsapp,
   included,
   optional,
+  listsHeading = "O que entra e o que é cobrado à parte",
+  includedTitle = "Está no preço",
+  optionalTitle = "Opcionais e custos à parte",
   steps,
   stepsNote,
   showProof = false,
@@ -89,10 +97,12 @@ export function ServicePage({
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">{intro}</p>
           <p className="mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-muted-foreground/80">{priceLine}</p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <TrackedButton href={simulate.href} event={simulate.event}>
-              {simulate.label}
-            </TrackedButton>
-            <TrackedButton href={whatsapp.href} event={whatsapp.event} variant="outline" external>
+            {simulate && (
+              <TrackedButton href={simulate.href} event={simulate.event}>
+                {simulate.label}
+              </TrackedButton>
+            )}
+            <TrackedButton href={whatsapp.href} event={whatsapp.event} variant={simulate ? "outline" : "default"} external>
               Chamar no WhatsApp
             </TrackedButton>
           </div>
@@ -104,12 +114,12 @@ export function ServicePage({
         <div className="mx-auto max-w-5xl px-6">
           <div className="text-center">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              O que entra e o que é cobrado à parte
+              {listsHeading}
             </h2>
           </div>
           <div className="mt-16 grid gap-6 md:grid-cols-2">
-            <ListCard title="Está no preço" items={included} />
-            <ListCard title="Opcionais e custos à parte" items={optional} />
+            <ListCard title={includedTitle} items={included} />
+            <ListCard title={optionalTitle} items={optional} />
           </div>
         </div>
       </section>
@@ -121,7 +131,7 @@ export function ServicePage({
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Como funciona</h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">{stepsNote}</p>
           </div>
-          <ol className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className={`mt-16 grid gap-4 sm:grid-cols-2 ${steps.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
             {steps.map((step, index) => (
               <li key={step.title} className="rounded-2xl border border-border bg-card/30 p-6">
                 <span className="font-mono text-sm text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
@@ -204,12 +214,16 @@ export function ServicePage({
         </div>
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{closing}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Simule o orçamento agora ou me chame no WhatsApp. Sem compromisso.</p>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            {simulate ? "Simule o orçamento agora ou me chame no WhatsApp. Sem compromisso." : "Me chame no WhatsApp para conversar. Sem compromisso."}
+          </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <TrackedButton href={simulate.href} event={`${simulate.event}_final`}>
-              {simulate.label}
-            </TrackedButton>
-            <TrackedButton href={whatsapp.href} event={whatsapp.event} variant="outline" external>
+            {simulate && (
+              <TrackedButton href={simulate.href} event={`${simulate.event}_final`}>
+                {simulate.label}
+              </TrackedButton>
+            )}
+            <TrackedButton href={whatsapp.href} event={whatsapp.event} variant={simulate ? "outline" : "default"} external>
               Chamar no WhatsApp
             </TrackedButton>
           </div>
