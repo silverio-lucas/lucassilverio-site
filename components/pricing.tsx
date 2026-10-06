@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { Check, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PRICES, TRAFFIC_MIN_MONTHS, formatBRL } from "@/lib/pricing"
@@ -56,13 +57,13 @@ const services = [
       { text: `Compromisso mínimo de ${TRAFFIC_MIN_MONTHS} meses`, tooltip: "Campanhas precisam de tempo de aprendizado para dar resultado" },
     ],
     extras: `Valores para um negócio e uma oferta principal. Mais ofertas ou operações maiores ficam sob orçamento. Verba de anúncios, criativos (${formatBRL(PRICES.trafficCreative)} cada) e a criação do site ou da landing page são cobrados à parte.`,
+    learnMore: { href: "/gestao-de-trafego", label: "Saiba como funciona." },
   },
 ]
 
 export function Pricing() {
-  // Leva o visitante ao orçamento já com o tipo escolhido.
+  // O botão leva ao simulador (/orcamento) já com o tipo escolhido na URL.
   const goToBudget = (type: "site" | "landing" | "trafego") => {
-    window.dispatchEvent(new CustomEvent("simulador:tipo", { detail: type }))
     track("servico_simular", { tipo: type })
   }
 
@@ -132,13 +133,25 @@ export function Pricing() {
 
                 <p className="mt-6 flex-1 border-t border-border/60 pt-5 text-xs leading-relaxed text-muted-foreground/80">
                   {service.extras}
+                  {"learnMore" in service && service.learnMore && (
+                    <>
+                      {" "}
+                      <Link
+                        href={service.learnMore.href}
+                        onClick={() => track("servico_saiba_mais", { tipo: service.type })}
+                        className="underline underline-offset-4 hover:text-foreground"
+                      >
+                        {service.learnMore.label}
+                      </Link>
+                    </>
+                  )}
                 </p>
 
                 <div className="mt-6">
                   <Button asChild variant="outline" className="w-full">
-                    <a href="#orcamento" onClick={() => goToBudget(service.type)}>
+                    <Link href={`/orcamento?tipo=${service.type}`} onClick={() => goToBudget(service.type)}>
                       Simular este orçamento
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </motion.div>

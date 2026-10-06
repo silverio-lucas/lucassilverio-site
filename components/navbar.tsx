@@ -2,26 +2,32 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, MessageCircle, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { WHATSAPP_URL } from "@/lib/site-content"
 import { track } from "@/lib/track"
 
-// Ordem igual à da página. O destino de "Serviços" segue sendo #planos.
+// Links com "/#" apontam para seções da home e funcionam de qualquer página. Os demais são páginas.
 const navLinks = [
-  { href: "#processo", label: "Processo" },
-  { href: "#planos", label: "Serviços" },
-  { href: "#orcamento", label: "Orçamento" },
-  { href: "#portfolio", label: "Portfólio" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#sobre", label: "Sobre" },
+  { href: "/#processo", label: "Processo" },
+  { href: "/#planos", label: "Serviços" },
+  { href: "/gestao-de-trafego", label: "Tráfego" },
+  { href: "/orcamento", label: "Orçamento" },
+  { href: "/#portfolio", label: "Portfólio" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#sobre", label: "Sobre" },
 ]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState("")
+  const pathname = usePathname()
+
+  // Seções da home destacam pela rolagem; páginas destacam pelo endereço.
+  const isActiveLink = (href: string) => (href.startsWith("/#") ? pathname === "/" && active === href : pathname === href)
 
   // Fundo translúcido só depois de rolar; no topo, o header fica limpo sobre o hero.
   useEffect(() => {
@@ -38,12 +44,13 @@ export function Navbar() {
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return
     const sections = navLinks
-      .map((link) => document.querySelector(link.href))
+      .filter((link) => link.href.startsWith("/#"))
+      .map((link) => document.querySelector(link.href.slice(1)))
       .filter((section): section is Element => section !== null)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+          if (entry.isIntersecting) setActive(`/#${entry.target.id}`)
         })
       },
       { rootMargin: "-40% 0px -55% 0px" },
@@ -72,7 +79,7 @@ export function Navbar() {
   }, [isOpen])
 
   const onNavigate = (href: string) => {
-    track("nav_click", { secao: href.replace("#", "") })
+    track("nav_click", { secao: href.replace(/^\/#?/, "") })
     setIsOpen(false)
   }
 
@@ -105,9 +112,9 @@ export function Navbar() {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="hidden items-center gap-6 xl:gap-8 lg:flex">
             {navLinks.map((link) => {
-              const isActive = active === link.href
+              const isActive = isActiveLink(link.href)
               return (
                 <Link
                   key={link.href}
@@ -181,7 +188,7 @@ export function Navbar() {
             >
               <div className="px-6 pt-2 pb-6">
                 {navLinks.map((link) => {
-                  const isActive = active === link.href
+                  const isActive = isActiveLink(link.href)
                   return (
                     <Link
                       key={link.href}

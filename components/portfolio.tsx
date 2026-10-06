@@ -1,9 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { ArrowRight, ArrowUpRight } from "lucide-react"
 import { PORTFOLIO_URL, PROJECTS, type PortfolioProject } from "@/lib/portfolio"
 import { track } from "@/lib/track"
+
+const MotionLink = motion.create(Link)
 
 function Thumb({ host }: { host: string }) {
   return (
@@ -95,8 +98,8 @@ export function Portfolio() {
             </span>
           </motion.a>
 
-          <motion.a
-            href="#orcamento"
+          <MotionLink
+            href="/orcamento"
             onClick={() => track("portfolio_ir_orcamento")}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +114,7 @@ export function Portfolio() {
               Ir para o orçamento
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
-          </motion.a>
+          </MotionLink>
         </div>
       </div>
     </section>

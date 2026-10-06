@@ -49,7 +49,7 @@ export function CTA() {
             </a>
           </Button>
           <Button variant="outline" size="lg" asChild className="group">
-            <Link href="#orcamento" onClick={() => track("cta_simular_final")}>
+            <Link href="/orcamento" onClick={() => track("cta_simular_final")}>
               Simular orçamento
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
