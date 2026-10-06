@@ -95,8 +95,8 @@ export function Hero() {
                   <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
                   <span className="ml-2 font-mono text-xs text-muted-foreground">projeto.status</span>
                 </div>
-                <div className="mt-3 flex items-baseline justify-between gap-3">
-                  <h3 className="min-w-0 truncate text-base font-medium text-foreground">{PROJECTS[0].host}</h3>
+                <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <h3 className="min-w-0 text-base font-medium text-foreground">{PROJECTS[0].host}</h3>
                   <span className={`shrink-0 font-mono text-xs ${PROJECTS[0].conceptual ? "text-muted-foreground" : "text-emerald-400"}`}>
                     {PROJECTS[0].conceptual ? "Conceitual" : "Publicado"}
                   </span>
