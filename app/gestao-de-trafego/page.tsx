@@ -139,8 +139,8 @@ export default function GestaoDeTrafegoPage() {
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-1/4 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
         </div>
-        <div className="mx-auto max-w-4xl px-6">
-          <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        <div className="mx-auto max-w-7xl px-6">
+          <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Gestão de tráfego para negócios locais
           </h1>
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
@@ -284,7 +284,7 @@ export default function GestaoDeTrafegoPage() {
       </section>
 
       {/* Chamada final */}
-      <section className="relative py-24">
+      <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[120px]" />
         </div>
