@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { Check, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PRICES, TRAFFIC_MIN_MONTHS, formatBRL } from "@/lib/pricing"
@@ -27,6 +28,7 @@ const services = [
       { text: "SEO básico", tooltip: "Otimizações técnicas iniciais para mecanismos de busca" },
     ],
     extras: `Opcionais: banco de dados (Supabase) e Google Meu Negócio, + ${formatBRL(PRICES.supabase)} cada.`,
+    learnMore: { href: "/criacao-de-sites", label: "Saiba o que está incluído." },
   },
   {
     type: "landing" as const,
@@ -41,6 +43,7 @@ const services = [
       { text: "Duas rodadas de ajustes", tooltip: null },
     ],
     extras: `Opcionais: página de agradecimento (+ ${formatBRL(PRICES.thankYou)}), CRM (a partir de ${formatBRL(PRICES.crm)}) e armazenamento de leads (+ ${formatBRL(PRICES.leadStorage)}).`,
+    learnMore: { href: "/landing-pages", label: "Saiba o que está incluído." },
   },
   {
     type: "trafego" as const,
@@ -56,13 +59,13 @@ const services = [
       { text: `Compromisso mínimo de ${TRAFFIC_MIN_MONTHS} meses`, tooltip: "Campanhas precisam de tempo de aprendizado para dar resultado" },
     ],
     extras: `Valores para um negócio e uma oferta principal. Mais ofertas ou operações maiores ficam sob orçamento. Verba de anúncios, criativos (${formatBRL(PRICES.trafficCreative)} cada) e a criação do site ou da landing page são cobrados à parte.`,
+    learnMore: { href: "/gestao-de-trafego", label: "Saiba como funciona." },
   },
 ]
 
 export function Pricing() {
-  // Leva o visitante ao orçamento já com o tipo escolhido.
+  // O botão leva ao simulador (/orcamento) já com o tipo escolhido na URL.
   const goToBudget = (type: "site" | "landing" | "trafego") => {
-    window.dispatchEvent(new CustomEvent("simulador:tipo", { detail: type }))
     track("servico_simular", { tipo: type })
   }
 
@@ -132,13 +135,25 @@ export function Pricing() {
 
                 <p className="mt-6 flex-1 border-t border-border/60 pt-5 text-xs leading-relaxed text-muted-foreground/80">
                   {service.extras}
+                  {"learnMore" in service && service.learnMore && (
+                    <>
+                      {" "}
+                      <Link
+                        href={service.learnMore.href}
+                        onClick={() => track("servico_saiba_mais", { tipo: service.type })}
+                        className="underline underline-offset-4 hover:text-foreground"
+                      >
+                        {service.learnMore.label}
+                      </Link>
+                    </>
+                  )}
                 </p>
 
                 <div className="mt-6">
                   <Button asChild variant="outline" className="w-full">
-                    <a href="#orcamento" onClick={() => goToBudget(service.type)}>
+                    <Link href={`/orcamento?tipo=${service.type}`} onClick={() => goToBudget(service.type)}>
                       Simular este orçamento
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </motion.div>
@@ -146,12 +161,26 @@ export function Pricing() {
           </div>
         </TooltipProvider>
 
+        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card/30 p-6 sm:flex-row sm:items-center">
+          <div>
+            <h3 className="text-base font-semibold text-foreground">Perfil da Empresa no Google</h3>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Para negócios locais: instalação por {formatBRL(PRICES.googleBusiness)} e gestão mensal por {formatBRL(PRICES.googleBusinessMonthly)}.
+            </p>
+          </div>
+          <Button asChild variant="outline" className="shrink-0">
+            <Link href="/google-meu-negocio" onClick={() => track("servico_saiba_mais", { tipo: "gbp" })}>
+              Conhecer o serviço
+            </Link>
+          </Button>
+        </div>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 text-center text-sm text-muted-foreground/70"
+          className="mt-4 text-center text-sm text-muted-foreground/70"
         >
           Valores de entrada. Cada projeto é analisado individualmente e recursos adicionais podem ser incluídos. Resultados de tráfego dependem de oferta, verba e mercado.
         </motion.p>

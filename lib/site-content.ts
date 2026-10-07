@@ -1,3 +1,5 @@
+import type { Metadata } from "next"
+
 export const WHATSAPP_NUMBER = "5531987638437"
 export const WHATSAPP_MESSAGE = "Olá, Lucas! Vi seu site e quero conversar sobre o meu projeto."
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
@@ -55,4 +57,21 @@ export const professionalServiceSchema = {
       },
     },
   ],
+}
+
+/** Metadados das páginas internas: título, descrição, canonical e Open Graph no mesmo padrão da home. */
+export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}${path}`,
+      siteName: "Lucas Silvério — Posicionamento Digital",
+      locale: "pt_BR",
+      type: "website",
+    },
+  }
 }

@@ -186,7 +186,8 @@ function ToggleRow({
 
 /* ---------- componente principal ---------- */
 
-export function BudgetSimulator() {
+export function BudgetSimulator({ standalone = false }: { standalone?: boolean }) {
+  const Heading = standalone ? "h1" : "h2"
   const [state, setState] = useState<QuoteState>(() => normalizeState({}))
   const [hydrated, setHydrated] = useState(false)
   const [open, setOpen] = useState(false)
@@ -250,15 +251,11 @@ export function BudgetSimulator() {
 
   const patch = (changes: Partial<QuoteState>) => setState((current) => normalizeState({ ...current, ...changes }))
 
-  // A seção de serviços pré-seleciona o tipo: "site" e "landing" abrem a aba Site já no formato certo.
+  // Links como /orcamento?tipo=trafego abrem o simulador no tipo certo ("site" e "landing" abrem a aba Site no formato escolhido).
   useEffect(() => {
-    const onType = (event: Event) => {
-      const type = (event as CustomEvent<string>).detail
-      if (type === "site" || type === "landing" || type === "trafego")
-        setState((current) => normalizeState({ ...current, projectType: type }))
-    }
-    window.addEventListener("simulador:tipo", onType)
-    return () => window.removeEventListener("simulador:tipo", onType)
+    const type = new URLSearchParams(window.location.search).get("tipo")
+    if (type === "site" || type === "landing" || type === "trafego")
+      setState((current) => normalizeState({ ...current, projectType: type }))
   }, [])
 
   const openRequest = () => {
@@ -327,7 +324,7 @@ export function BudgetSimulator() {
   const pagesLabel = `${quote.totalPages} ${quote.totalPages === 1 ? "página no projeto" : "páginas no projeto"}`
 
   return (
-    <section id="orcamento" ref={sectionRef} className="relative py-24">
+    <section id="orcamento" ref={sectionRef} className={`relative ${standalone ? "pt-32 pb-24" : "py-24"}`}>
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/3 blur-[150px]" />
       </div>
@@ -340,7 +337,7 @@ export function BudgetSimulator() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Monte seu orçamento</h2>
+          <Heading className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Monte seu orçamento</Heading>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Escolha o que seu negócio precisa, veja a estimativa na hora e envie o pedido de proposta pelo WhatsApp
           </p>

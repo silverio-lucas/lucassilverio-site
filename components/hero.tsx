@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap, MessageCircle, BarChart3, Megaphone } from "lucide-react"
 import Link from "next/link"
 import { PRICES, formatBRL } from "@/lib/pricing"
+import { PROJECTS } from "@/lib/portfolio"
 
 const projectSteps = [
   { status: "complete", text: "Planejamento", color: "bg-emerald-400" },
@@ -53,7 +54,7 @@ export function Hero() {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button size="lg" asChild className="group">
-                <Link href="#orcamento">
+                <Link href="/orcamento">
                   Simular orçamento
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -94,9 +95,11 @@ export function Hero() {
                   <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
                   <span className="ml-2 font-mono text-xs text-muted-foreground">projeto.status</span>
                 </div>
-                <div className="mt-3 flex items-baseline justify-between gap-3">
-                  <h3 className="text-base font-medium text-foreground">luanacopywriter.com.br</h3>
-                  <span className="shrink-0 font-mono text-xs text-emerald-400">Publicado</span>
+                <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <h3 className="min-w-0 text-base font-medium text-foreground">{PROJECTS[0].host}</h3>
+                  <span className={`shrink-0 font-mono text-xs ${PROJECTS[0].conceptual ? "text-muted-foreground" : "text-emerald-400"}`}>
+                    {PROJECTS[0].conceptual ? "Conceitual" : "Publicado"}
+                  </span>
                 </div>
                 <div
                   className="mt-3 flex gap-1.5"

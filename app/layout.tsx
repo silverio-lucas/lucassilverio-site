@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Tracking } from '@/components/tracking'
+import { ConsentBanner } from '@/components/consent-banner'
 import { SITE_URL, seo, professionalServiceSchema } from '@/lib/site-content'
 import './globals.css'
 
@@ -51,6 +52,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
         />
         <Tracking />
+        <ConsentBanner />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
