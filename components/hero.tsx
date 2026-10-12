@@ -60,7 +60,7 @@ export function Hero() {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://wa.me/5531997778812" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5531935033407" target="_blank" rel="noopener noreferrer">
                   Conversar no WhatsApp
                 </a>
               </Button>

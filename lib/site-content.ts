@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-export const WHATSAPP_NUMBER = "5531987638437"
+export const WHATSAPP_NUMBER = "5531935033407"
 export const WHATSAPP_MESSAGE = "Olá, Lucas! Vi seu site e quero conversar sobre o meu projeto."
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
