@@ -28,4 +28,26 @@ export const PROJECTS: PortfolioProject[] = [
     thumbnail: "/clara-odontologia-thumb.webp",
     conceptual: true,
   },
+  {
+    id: "sorriso-studio",
+    name: "Sorriso Studio",
+    segment: "Clínica odontológica fictícia",
+    type: "Landing page",
+    description:
+      "Landing page conceitual de uma clínica odontológica premium, com visual claro, tratamentos em destaque e chamada direta para agendamento.",
+    url: "https://sorriso-studio-seven.vercel.app",
+    host: "sorriso-studio-seven.vercel.app",
+    conceptual: true,
+  },
+  {
+    id: "monteiro-vasconcelos",
+    name: "Monteiro & Vasconcelos",
+    segment: "Escritório de advocacia fictício",
+    type: "Landing page",
+    description:
+      "Landing page conceitual de um escritório de advocacia, em tema escuro com detalhes dourados, áreas de atuação e contato para consulta.",
+    url: "https://monteiro-vasconcelos.vercel.app",
+    host: "monteiro-vasconcelos.vercel.app",
+    conceptual: true,
+  },
 ]
