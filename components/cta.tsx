@@ -1,9 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, MessageCircle } from "lucide-react"
+import { MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { WHATSAPP_URL } from "@/lib/site-content"
 import { track } from "@/lib/track"
 
@@ -26,7 +25,7 @@ export function CTA() {
             Vamos conversar sobre o seu projeto?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Me chame no WhatsApp ou simule seu orçamento agora. Sem compromisso.
+            Me chame no WhatsApp. Sem compromisso.
           </p>
         </motion.div>
 
@@ -35,7 +34,7 @@ export function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-10 flex justify-center"
         >
           <Button size="lg" asChild className="group">
             <a
@@ -47,12 +46,6 @@ export function CTA() {
               <MessageCircle className="mr-2 h-4 w-4" />
               Chamar no WhatsApp
             </a>
-          </Button>
-          <Button variant="outline" size="lg" asChild className="group">
-            <Link href="/orcamento" onClick={() => track("cta_simular_final")}>
-              Simular orçamento
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
           </Button>
         </motion.div>
       </div>

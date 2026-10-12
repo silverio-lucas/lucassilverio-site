@@ -1,12 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { PORTFOLIO_URL, PROJECTS, type PortfolioProject } from "@/lib/portfolio"
 import { track } from "@/lib/track"
-
-const MotionLink = motion.create(Link)
 
 function Thumb({ host }: { host: string }) {
   return (
@@ -117,23 +114,6 @@ export function Portfolio() {
             </span>
           </motion.a>
 
-          <MotionLink
-            href="/orcamento"
-            onClick={() => track("portfolio_ir_orcamento")}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: (PROJECTS.length + 1) * 0.1 }}
-            className="group flex flex-col rounded-2xl border border-accent/50 bg-accent/5 p-6 transition-colors hover:bg-accent/10"
-          >
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">O próximo pode ser o seu</p>
-            <h3 className="mt-2 text-xl font-semibold text-foreground">Vamos desenhar o seu?</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Monte o escopo e veja a estimativa na hora.</p>
-            <span className="mt-auto flex items-center justify-between border-t border-accent/30 pt-4 text-xs text-foreground">
-              Ir para o orçamento
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </span>
-          </MotionLink>
         </div>
       </div>
     </section>

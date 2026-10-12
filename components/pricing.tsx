@@ -1,11 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
 import { Check, Info } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { PRICES, TRAFFIC_MIN_MONTHS, formatBRL } from "@/lib/pricing"
-import { track } from "@/lib/track"
 import {
   Tooltip,
   TooltipContent,
@@ -29,7 +26,6 @@ const services = [
       { text: "Compromisso mínimo de 6 meses", tooltip: "Para consolidar a presença e aproveitar ao máximo o perfil" },
     ],
     extras: `O serviço de perfil pode ser combinado com o site ou gestão de tráfego para uma presença local completa.`,
-    learnMore: { href: "/google-meu-negocio", label: "Saiba o que está incluído." },
   },
   {
     type: "trafego" as const,
@@ -45,7 +41,6 @@ const services = [
       { text: `Compromisso mínimo de ${TRAFFIC_MIN_MONTHS} meses`, tooltip: "Campanhas precisam de tempo de aprendizado para dar resultado" },
     ],
     extras: `Verba de anúncios e criativos são cobrados à parte. Valores para um negócio e uma oferta principal. Operações maiores ficam sob orçamento.`,
-    learnMore: { href: "/gestao-de-trafego", label: "Saiba como funciona." },
   },
   {
     type: "site" as const,
@@ -60,16 +55,10 @@ const services = [
       { text: "SEO básico", tooltip: "Otimizações técnicas iniciais para mecanismos de busca" },
     ],
     extras: `Opcionais: banco de dados (Supabase) e Perfil da Empresa no Google, + ${formatBRL(PRICES.supabase)} e ${formatBRL(PRICES.googleBusiness)} cada.`,
-    learnMore: { href: "/criacao-de-sites", label: "Saiba o que está incluído." },
   },
 ]
 
 export function Pricing() {
-  // O botão leva ao simulador (/orcamento) já com o tipo escolhido na URL.
-  const goToBudget = (type: "site" | "trafego" | "gbp") => {
-    track("servico_simular", { tipo: type })
-  }
-
   return (
     <section id="planos" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -136,27 +125,8 @@ export function Pricing() {
 
                 <p className="mt-6 flex-1 border-t border-border/60 pt-5 text-xs leading-relaxed text-muted-foreground/80">
                   {service.extras}
-                  {"learnMore" in service && service.learnMore && (
-                    <>
-                      {" "}
-                      <Link
-                        href={service.learnMore.href}
-                        onClick={() => track("servico_saiba_mais", { tipo: service.type })}
-                        className="underline underline-offset-4 hover:text-foreground"
-                      >
-                        {service.learnMore.label}
-                      </Link>
-                    </>
-                  )}
                 </p>
 
-                <div className="mt-6">
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href={`/orcamento?tipo=${service.type}`} onClick={() => goToBudget(service.type)}>
-                      Simular este orçamento
-                    </Link>
-                  </Button>
-                </div>
               </motion.div>
             ))}
           </div>
