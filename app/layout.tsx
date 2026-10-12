@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: seo.title,
     description: seo.description,
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     siteName: 'Lucas Silvério — Posicionamento Digital',
     locale: 'pt_BR',
     type: 'website',
