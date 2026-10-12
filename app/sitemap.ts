@@ -7,7 +7,7 @@ const SITEMAP_PATHS = ["", "/criacao-de-sites", "/landing-pages", "/gestao-de-tr
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
   return SITEMAP_PATHS.map((path) => ({
-    url: `${SITE_URL}${path}`,
+    url: `${SITE_URL}${path || "/"}`,
     lastModified,
     changeFrequency: path === "/politica-de-privacidade" ? "yearly" : "monthly",
     priority: path === "" ? 1 : path === "/politica-de-privacidade" ? 0.3 : 0.8,
