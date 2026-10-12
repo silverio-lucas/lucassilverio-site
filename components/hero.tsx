@@ -34,10 +34,7 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <div
             className="flex flex-col"
           >
             <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -65,13 +62,10 @@ export function Hero() {
                 </a>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Content - Foto + status do projeto recente */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          <div
             className="relative mx-auto w-full max-w-sm sm:max-w-md lg:ml-auto lg:mr-0"
           >
             <div className="relative overflow-hidden rounded-2xl border border-border bg-card/50">
@@ -114,7 +108,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Social Proof */}
