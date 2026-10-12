@@ -16,34 +16,20 @@ import {
 // Preços vêm de lib/pricing.ts: os mesmos do simulador, para nunca divergirem.
 const services = [
   {
-    type: "site" as const,
-    name: "Site institucional",
-    price: formatBRL(PRICES.base),
-    description: "Para apresentar a empresa, os serviços e os canais de contato.",
+    type: "gbp" as const,
+    name: "Perfil da Empresa no Google",
+    price: formatBRL(PRICES.googleBusiness),
+    period: "instalação",
+    description: "Para negócios locais aparecerem nos resultados do Google Maps e na Busca.",
     features: [
-      { text: "Página principal completa", tooltip: "Apresentação da empresa, serviços e canais de contato" },
-      { text: `Páginas internas: + ${formatBRL(PRICES.page)} cada`, tooltip: null },
-      { text: "Integração WhatsApp", tooltip: null },
-      { text: "Analytics, Pixel e Clarity", tooltip: "Google Analytics, Meta Pixel e Microsoft Clarity já incluídos" },
-      { text: "SEO básico", tooltip: "Otimizações técnicas iniciais para mecanismos de busca" },
+      { text: "Instalação e configuração completa", tooltip: "Otimização do perfil para máxima visibilidade" },
+      { text: `Gestão mensal: ${formatBRL(PRICES.googleBusinessMonthly)}/mês`, tooltip: "Atualizações, fotos, horário e respostas" },
+      { text: "Integração com o site (opcional)", tooltip: null },
+      { text: "Analytics do perfil", tooltip: "Visualizações, buscas e chamadas" },
+      { text: "Sem compromisso mínimo", tooltip: null },
     ],
-    extras: `Opcionais: banco de dados (Supabase) e Google Meu Negócio, + ${formatBRL(PRICES.supabase)} cada.`,
-    learnMore: { href: "/criacao-de-sites", label: "Saiba o que está incluído." },
-  },
-  {
-    type: "landing" as const,
-    name: "Landing page",
-    price: formatBRL(PRICES.landingPage),
-    description: "Para uma oferta ou campanha, com uma ação principal clara.",
-    features: [
-      { text: "Uma página focada em uma oferta", tooltip: null },
-      { text: "Ação principal: WhatsApp, leads ou checkout", tooltip: null },
-      { text: "Formulário de até 5 campos", tooltip: "Envio para um e-mail, sem banco de dados" },
-      { text: "Analytics, Pixel e Clarity", tooltip: "Google Analytics, Meta Pixel e Microsoft Clarity já incluídos" },
-      { text: "Duas rodadas de ajustes", tooltip: null },
-    ],
-    extras: `Opcionais: página de agradecimento (+ ${formatBRL(PRICES.thankYou)}), CRM (a partir de ${formatBRL(PRICES.crm)}) e armazenamento de leads (+ ${formatBRL(PRICES.leadStorage)}).`,
-    learnMore: { href: "/landing-pages", label: "Saiba o que está incluído." },
+    extras: `O serviço de perfil pode ser combinado com o site ou gestão de tráfego para uma presença local completa.`,
+    learnMore: { href: "/google-meu-negocio", label: "Saiba o que está incluído." },
   },
   {
     type: "trafego" as const,
@@ -61,11 +47,26 @@ const services = [
     extras: `Valores para um negócio e uma oferta principal. Mais ofertas ou operações maiores ficam sob orçamento. Verba de anúncios, criativos (${formatBRL(PRICES.trafficCreative)} cada) e a criação do site ou da landing page são cobrados à parte.`,
     learnMore: { href: "/gestao-de-trafego", label: "Saiba como funciona." },
   },
+  {
+    type: "site" as const,
+    name: "Site institucional",
+    price: formatBRL(PRICES.base),
+    description: "Para apresentar a empresa, os serviços e os canais de contato.",
+    features: [
+      { text: "Página principal completa", tooltip: "Apresentação da empresa, serviços e canais de contato" },
+      { text: `Páginas internas: + ${formatBRL(PRICES.page)} cada`, tooltip: null },
+      { text: "Integração WhatsApp", tooltip: null },
+      { text: "Analytics, Pixel e Clarity", tooltip: "Google Analytics, Meta Pixel e Microsoft Clarity já incluídos" },
+      { text: "SEO básico", tooltip: "Otimizações técnicas iniciais para mecanismos de busca" },
+    ],
+    extras: `Opcionais: banco de dados (Supabase) e Perfil da Empresa no Google, + ${formatBRL(PRICES.supabase)} e ${formatBRL(PRICES.googleBusiness)} cada.`,
+    learnMore: { href: "/criacao-de-sites", label: "Saiba o que está incluído." },
+  },
 ]
 
 export function Pricing() {
   // O botão leva ao simulador (/orcamento) já com o tipo escolhido na URL.
-  const goToBudget = (type: "site" | "landing" | "trafego") => {
+  const goToBudget = (type: "site" | "trafego" | "gbp") => {
     track("servico_simular", { tipo: type })
   }
 
@@ -160,20 +161,6 @@ export function Pricing() {
             ))}
           </div>
         </TooltipProvider>
-
-        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-card/30 p-6 sm:flex-row sm:items-center">
-          <div>
-            <h3 className="text-base font-semibold text-foreground">Perfil da Empresa no Google</h3>
-            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              Para negócios locais: instalação por {formatBRL(PRICES.googleBusiness)} e gestão mensal por {formatBRL(PRICES.googleBusinessMonthly)}.
-            </p>
-          </div>
-          <Button asChild variant="outline" className="shrink-0">
-            <Link href="/google-meu-negocio" onClick={() => track("servico_saiba_mais", { tipo: "gbp" })}>
-              Conhecer o serviço
-            </Link>
-          </Button>
-        </div>
 
         <motion.p
           initial={{ opacity: 0 }}
