@@ -30,6 +30,9 @@ export const seo = {
 
 const BRAND = "Lucas Silvério — Posicionamento Digital"
 export const WHATSAPP_PHONE = "+55 31 93503-3407"
+export const INSTAGRAM_URL = "https://www.instagram.com/o.lucassilverio/"
+export const LINKEDIN_URL = "https://www.linkedin.com/in/lucassilverio/"
+const SAME_AS = [INSTAGRAM_URL, LINKEDIN_URL]
 const ADDRESS = {
   "@type": "PostalAddress",
   addressLocality: "Ipatinga",
@@ -48,6 +51,7 @@ export const professionalServiceSchema = {
   image: `${SITE_URL}/og-image.png`,
   logo: `${SITE_URL}/icon.svg`,
   telephone: WHATSAPP_PHONE,
+  sameAs: SAME_AS,
   inLanguage: "pt-BR",
   areaServed: [
     { "@type": "AdministrativeArea", name: "Vale do Aço, MG" },
@@ -81,6 +85,7 @@ export const personSchema = {
   image: `${SITE_URL}/lucas-silverio-960.webp`,
   jobTitle: "Web designer e gestor de tráfego",
   telephone: WHATSAPP_PHONE,
+  sameAs: SAME_AS,
   address: ADDRESS,
   worksFor: { "@id": `${SITE_URL}/#negocio` },
 }

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { CookiePreferencesButton } from "@/components/cookie-preferences-button"
-import { WHATSAPP_URL } from "@/lib/site-content"
+import { INSTAGRAM_URL, LINKEDIN_URL, WHATSAPP_URL } from "@/lib/site-content"
 
 export function Footer() {
   return (
@@ -22,6 +22,22 @@ export function Footer() {
               className="transition-colors hover:text-foreground"
             >
               WhatsApp: +55 31 93503-3407
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer me"
+              className="transition-colors hover:text-foreground"
+            >
+              Instagram
+            </a>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer me"
+              className="transition-colors hover:text-foreground"
+            >
+              LinkedIn
             </a>
             <Link href="/politica-de-privacidade" className="transition-colors hover:text-foreground">
               Política de privacidade

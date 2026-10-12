@@ -25,6 +25,7 @@ Contato: WhatsApp ${WHATSAPP_PHONE}. Responsável: Lucas Silvério, web designer
 ## Observações
 
 - Os projetos da seção "Sites no ar" são conceituais (sem cliente real) e estão identificados como tal.
+- Redes: [Instagram](https://www.instagram.com/o.lucassilverio/) · [LinkedIn](https://www.linkedin.com/in/lucassilverio/)
 - [Política de privacidade](${SITE_URL}/politica-de-privacidade)
 `
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } })
