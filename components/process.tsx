@@ -6,27 +6,27 @@ const steps = [
   {
     number: "01",
     title: "Conversa inicial",
-    description: "Pelo WhatsApp ou em reunião, conforme o caso",
+    description: "Entendo seu negócio, objetivos e o resultado que você espera",
   },
   {
     number: "02",
-    title: "Entendimento do negócio",
-    description: "Analiso seu mercado, público e diferenciais",
+    title: "Diagnóstico estratégico",
+    description: "Analiso seu mercado, público-alvo e oportunidades de posicionamento",
   },
   {
     number: "03",
-    title: "Organização do conteúdo",
-    description: "Estruturo textos, imagens e informações do site",
+    title: "Planejamento",
+    description: "Defino quais canais usar e como estruturar sua presença digital",
   },
   {
     number: "04",
-    title: "Desenvolvimento",
-    description: "Construo seu site com tecnologia moderna",
+    title: "Execução",
+    description: "Configuro Perfil no Google, ativo campanhas de tráfego ou desenvolvo seu site",
   },
   {
     number: "05",
-    title: "Publicação",
-    description: "Publico o site, configuro a medição e, se contratado, ativo as campanhas",
+    title: "Otimização contínua",
+    description: "Acompanho os resultados, envio relatórios e ajusto a estratégia conforme necessário",
   },
 ]
 

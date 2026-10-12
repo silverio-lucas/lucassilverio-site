@@ -14,21 +14,6 @@ export function Footer() {
           </Link>
 
           <nav aria-label="Rodapé" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <Link href="/criacao-de-sites" className="transition-colors hover:text-foreground">
-              Criação de sites
-            </Link>
-            <Link href="/landing-pages" className="transition-colors hover:text-foreground">
-              Landing pages
-            </Link>
-            <Link href="/gestao-de-trafego" className="transition-colors hover:text-foreground">
-              Gestão de tráfego
-            </Link>
-            <Link href="/google-meu-negocio" className="transition-colors hover:text-foreground">
-              Google Meu Negócio
-            </Link>
-            <Link href="/orcamento" className="transition-colors hover:text-foreground">
-              Orçamento
-            </Link>
             <Link href="/politica-de-privacidade" className="transition-colors hover:text-foreground">
               Política de privacidade
             </Link>

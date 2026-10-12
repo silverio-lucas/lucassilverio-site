@@ -4,12 +4,12 @@ import { motion } from "framer-motion"
 import { Shield, Heart, Zap, MessageCircle, BarChart, TrendingUp } from "lucide-react"
 
 const solutions = [
-  { icon: Shield, title: "Presença profissional", description: "Design moderno que transmite credibilidade" },
-  { icon: Heart, title: "Mais confiança", description: "Textos e provas que ajudam o visitante a decidir por você." },
-  { icon: Zap, title: "Carregamento rápido", description: "Desempenho otimizado nos Core Web Vitals do Google." },
-  { icon: MessageCircle, title: "WhatsApp integrado", description: "O interessado fala com você no canal em que você já fecha vendas." },
-  { icon: BarChart, title: "Medição completa", description: "Google Analytics, Meta Pixel e Clarity para saber de onde vêm os contatos." },
-  { icon: TrendingUp, title: "Estrutura preparada para crescer", description: "Base sólida para anúncios, novas páginas e integrações." },
+  { icon: TrendingUp, title: "Aparece onde o cliente procura", description: "Perfil otimizado no Google Maps e na Busca para ser encontrado na hora da necessidade." },
+  { icon: Zap, title: "Atrai clientes qualificados", description: "Anúncios no Google e Meta direcionados para quem procura por seu serviço perto de você." },
+  { icon: MessageCircle, title: "WhatsApp como canal principal", description: "Prospects vão direto para o WhatsApp — onde você já fecha vendas." },
+  { icon: Heart, title: "Credibilidade local", description: "Perfil completo com fotos, horários, avaliações e respostas que geram confiança." },
+  { icon: BarChart, title: "Dados para otimizar", description: "Relatórios mensais mostrando o que funciona, quanto custa e como melhorar." },
+  { icon: Shield, title: "Presença consolidada", description: "Site institucional (se necessário) consolida tudo e melhora a autoridade local." },
 ]
 
 export function Solution() {
@@ -29,7 +29,7 @@ export function Solution() {
           className="text-center"
         >
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Mais do que um site
+            Posicionamento digital que traz clientes
           </h2>
         </motion.div>
 

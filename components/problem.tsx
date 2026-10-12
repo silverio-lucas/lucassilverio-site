@@ -4,12 +4,12 @@ import { motion } from "framer-motion"
 import { Clock, Palette, Target, TrendingDown, Users, Cog } from "lucide-react"
 
 const problems = [
-  { icon: Clock, title: "Site lento", description: "Quem espera a página abrir no celular vai para o concorrente." },
-  { icon: Palette, title: "Visual antigo", description: "Um site desatualizado faz sua empresa parecer menor do que é." },
-  { icon: Target, title: "Sem estratégia", description: "Sem clareza sobre o que oferecer, o visitante não entende o que fazer." },
-  { icon: TrendingDown, title: "Sem conversão", description: "Muita visita e pouco contato: falta um caminho claro até o WhatsApp." },
-  { icon: Users, title: "Sem acompanhamento", description: "Sem dados, você não sabe de onde vêm os clientes nem o que ajustar." },
-  { icon: Cog, title: "Sem automação", description: "Contatos que chegam soltos e processos manuais tomam o seu tempo." },
+  { icon: Users, title: "Ninguém sabe que você existe", description: "Seus clientes em potencial procuram no Google e Maps, mas não te encontram." },
+  { icon: Target, title: "Sem presença digital", description: "Não aparecer onde o cliente procura é deixar dinheiro sobre a mesa." },
+  { icon: TrendingDown, title: "Sem estratégia de atração", description: "Sem clareza e planejamento, o cliente descobre o concorrente primeiro." },
+  { icon: Clock, title: "Processos lentos", description: "Contatos que chegam soltos e sem integração tomam o seu tempo precioso." },
+  { icon: Palette, title: "Perfil desatualizado", description: "Um Perfil do Google incompleto ou com fotos antigas afasta novos clientes." },
+  { icon: Cog, title: "Sem dados", description: "Sem acompanhamento, você não sabe o que está funcionando ou o que ajustar." },
 ]
 
 export function Problem() {
@@ -24,7 +24,7 @@ export function Problem() {
           className="text-center"
         >
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Seu site pode estar afastando clientes
+            Seus clientes locais procuram antes de ligar
           </h2>
         </motion.div>
 

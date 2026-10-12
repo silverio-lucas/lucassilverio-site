@@ -3,7 +3,7 @@
  * mesma oferta, mesmas regras e mesmos textos do pedido.
  */
 export const PRICES = Object.freeze({
-  base: 2000,
+  base: 1200,
   landingPage: 1200,
   page: 400,
   supabase: 500,

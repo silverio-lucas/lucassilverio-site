@@ -41,26 +41,28 @@ export function Hero() {
             className="flex flex-col"
           >
             <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Seu site precisa deixar claro por que escolher sua empresa
+              Seu negócio local aparece para quem quer comprar perto
             </h1>
-            
+
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-              Sou Lucas Silvério, web designer e gestor de tráfego. Cuido do posicionamento digital do seu negócio: crio o site ou a landing page, com WhatsApp e medição desde o primeiro dia, e administro os anúncios que levam clientes até a sua página.
+              Sou Lucas Silvério, especialista em posicionamento digital para negócios locais. Gerencio seu Perfil no Google para aparecer nos mapas e buscas, e administro os anúncios que levam clientes até você. Quando necessário, crio o site que consolida tudo isso.
             </p>
 
             <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-muted-foreground/80">
-              Landing pages a partir de {formatBRL(PRICES.landingPage)}, sites a partir de {formatBRL(PRICES.base)} e gestão de tráfego a partir de {formatBRL(PRICES.trafficSingle)} por mês.
+              Perfil da Empresa no Google a partir de {formatBRL(PRICES.googleBusiness)} (instalação) + {formatBRL(PRICES.googleBusinessMonthly)}/mês. Gestão de tráfego a partir de {formatBRL(PRICES.trafficCombined)}/mês. Site institucional a partir de {formatBRL(PRICES.base)}.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button size="lg" asChild className="group">
-                <Link href="/orcamento">
-                  Simular orçamento
+                <Link href="#planos">
+                  Ver como começo
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link href="#planos">Ver serviços</Link>
+                <a href="https://wa.me/5531997778812" target="_blank" rel="noopener noreferrer">
+                  Conversar no WhatsApp
+                </a>
               </Button>
             </div>
           </motion.div>
