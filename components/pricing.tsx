@@ -34,17 +34,17 @@ const services = [
   {
     type: "trafego" as const,
     name: "Gestão de tráfego",
-    price: formatBRL(PRICES.trafficSingle),
+    price: formatBRL(PRICES.trafficCombined),
     period: "por mês",
     description: "Para negócios locais que querem aparecer para quem compra por perto.",
     features: [
-      { text: "Canais recomendados conforme o seu caso", tooltip: "Meta, Google ou os dois, segundo o negócio, o objetivo e a verba" },
-      { text: `Um canal: a partir de ${formatBRL(PRICES.trafficSingle)}/mês`, tooltip: null },
-      { text: `Meta + Google: a partir de ${formatBRL(PRICES.trafficCombined)}/mês`, tooltip: null },
-      { text: "Campanhas, públicos e relatório mensal", tooltip: null },
+      { text: "Estruturação de campanhas e públicos", tooltip: null },
+      { text: "Gestão em Meta Ads e Google Ads", tooltip: null },
+      { text: "Acompanhamento e relatório mensal", tooltip: null },
+      { text: "Diagnóstico estratégico dos canais", tooltip: "Recomendação de Meta, Google ou os dois conforme o negócio" },
       { text: `Compromisso mínimo de ${TRAFFIC_MIN_MONTHS} meses`, tooltip: "Campanhas precisam de tempo de aprendizado para dar resultado" },
     ],
-    extras: `Valores para um negócio e uma oferta principal. Mais ofertas ou operações maiores ficam sob orçamento. Verba de anúncios, criativos (${formatBRL(PRICES.trafficCreative)} cada) e a criação do site ou da landing page são cobrados à parte.`,
+    extras: `Verba de anúncios e criativos são cobrados à parte. Valores para um negócio e uma oferta principal. Operações maiores ficam sob orçamento.`,
     learnMore: { href: "/gestao-de-trafego", label: "Saiba como funciona." },
   },
   {
