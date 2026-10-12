@@ -9,12 +9,10 @@ import { Button } from "@/components/ui/button"
 import { WHATSAPP_URL } from "@/lib/site-content"
 import { track } from "@/lib/track"
 
-// Links com "/#" apontam para seções da home e funcionam de qualquer página. Os demais são páginas.
+// Links com "/#" apontam para seções da home
 const navLinks = [
   { href: "/#processo", label: "Processo" },
   { href: "/#planos", label: "Serviços" },
-  { href: "/gestao-de-trafego", label: "Tráfego" },
-  { href: "/orcamento", label: "Orçamento" },
   { href: "/#portfolio", label: "Portfólio" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#sobre", label: "Sobre" },
