@@ -135,7 +135,8 @@ export function pageMetadata({ title, description, path }: { title: string; desc
       siteName: "Lucas Silvério — Posicionamento Digital",
       locale: "pt_BR",
       type: "website",
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Lucas Silvério — Posicionamento Digital" }],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
   }
 }
