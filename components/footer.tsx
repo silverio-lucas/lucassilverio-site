@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { CookiePreferencesButton } from "@/components/cookie-preferences-button"
+import { WHATSAPP_URL } from "@/lib/site-content"
 
 export function Footer() {
   return (
@@ -14,6 +15,14 @@ export function Footer() {
           </Link>
 
           <nav aria-label="Rodapé" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              WhatsApp: +55 31 93503-3407
+            </a>
             <Link href="/politica-de-privacidade" className="transition-colors hover:text-foreground">
               Política de privacidade
             </Link>
