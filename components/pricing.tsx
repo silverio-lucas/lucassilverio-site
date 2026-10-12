@@ -26,7 +26,7 @@ const services = [
       { text: `Gestão mensal: ${formatBRL(PRICES.googleBusinessMonthly)}/mês`, tooltip: "Atualizações, fotos, horário e respostas" },
       { text: "Integração com o site (opcional)", tooltip: null },
       { text: "Analytics do perfil", tooltip: "Visualizações, buscas e chamadas" },
-      { text: "Sem compromisso mínimo", tooltip: null },
+      { text: "Compromisso mínimo de 6 meses", tooltip: "Para consolidar a presença e aproveitar ao máximo o perfil" },
     ],
     extras: `O serviço de perfil pode ser combinado com o site ou gestão de tráfego para uma presença local completa.`,
     learnMore: { href: "/google-meu-negocio", label: "Saiba o que está incluído." },
