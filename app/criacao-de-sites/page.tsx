@@ -69,6 +69,7 @@ const faqs = [
 export default function CriacaoDeSitesPage() {
   return (
     <ServicePage
+      path="/criacao-de-sites"
       title="Criação de site institucional para a sua empresa"
       intro="Eu desenho e desenvolvo um site que mostra com clareza o que a sua empresa vende, para quem e qual ação o visitante deve tomar, com WhatsApp e medição configurados desde o primeiro dia."
       priceLine={`A partir de ${formatBRL(PRICES.base)}, pagamento único. Cada página interna a mais custa ${formatBRL(PRICES.page)}.`}

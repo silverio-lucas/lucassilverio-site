@@ -10,10 +10,14 @@ import { FAQ } from "@/components/faq"
 import { About } from "@/components/about"
 import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
+import { JsonLd } from "@/components/json-ld"
+import { faqs } from "@/lib/faqs"
+import { faqSchema } from "@/lib/site-content"
 
 export default function Home() {
   return (
     <main id="conteudo" className="min-h-screen overflow-x-clip">
+      <JsonLd data={faqSchema(faqs)} />
       <Navbar />
       <Hero />
       <Problem />

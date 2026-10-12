@@ -9,6 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { PORTFOLIO_URL, PROJECTS } from "@/lib/portfolio"
+import { JsonLd } from "@/components/json-ld"
+import { faqSchema, serviceSchema } from "@/lib/site-content"
 
 interface Step {
   title: string
@@ -21,6 +23,8 @@ interface Faq {
 }
 
 export interface ServicePageProps {
+  /** Caminho da página (ex.: "/criacao-de-sites"), usado nos dados estruturados. */
+  path: string
   title: string
   intro: string
   priceLine: string
@@ -62,6 +66,7 @@ function ListCard({ title, items }: { title: string; items: string[] }) {
 
 /** Estrutura das páginas de serviço (site e landing page): cada página só informa texto e preços. */
 export function ServicePage({
+  path,
   title,
   intro,
   priceLine,
@@ -83,6 +88,7 @@ export function ServicePage({
 
   return (
     <main id="conteudo" className="min-h-screen">
+      <JsonLd data={[serviceSchema({ name: title, description: intro, path }), faqSchema(faqs)]} />
       <Navbar />
 
       {/* Abertura */}

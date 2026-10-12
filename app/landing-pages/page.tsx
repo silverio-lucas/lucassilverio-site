@@ -70,6 +70,7 @@ const faqs = [
 export default function LandingPagesPage() {
   return (
     <ServicePage
+      path="/landing-pages"
       title="Criação de landing pages para campanhas e ofertas"
       intro="Eu crio uma página focada em uma única oferta e em uma única ação, com formulário ou WhatsApp, pronta para receber o tráfego dos seus anúncios e já com a medição configurada."
       priceLine={`A partir de ${formatBRL(PRICES.landingPage)}, pagamento único. Página de agradecimento, CRM e armazenamento de leads são opcionais.`}

@@ -69,6 +69,7 @@ const faqs = [
 export default function GoogleMeuNegocioPage() {
   return (
     <ServicePage
+      path="/google-meu-negocio"
       title="Perfil da Empresa no Google para negócios locais"
       intro="Eu instalo e cuido do perfil da sua empresa no Google, o cadastro que aparece na busca e no Google Maps quando alguém procura o que você vende por perto, com as avaliações respondidas e publicações toda semana."
       priceLine={`Instalação por ${formatBRL(PRICES.googleBusiness)}, em pagamento único, e gestão mensal por ${formatBRL(PRICES.googleBusinessMonthly)}.`}

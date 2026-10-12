@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Tracking } from '@/components/tracking'
+import { JsonLd } from '@/components/json-ld'
 import { ConsentBanner } from '@/components/consent-banner'
-import { SITE_URL, seo, professionalServiceSchema } from '@/lib/site-content'
+import { SITE_URL, seo, professionalServiceSchema, personSchema, websiteSchema } from '@/lib/site-content'
 import './globals.css'
 
 const inter = Inter({ 
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     type: 'website',
   },
+  twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
 }
 
 export const viewport: Viewport = {
@@ -47,10 +49,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="bg-background">
       <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
-        />
+        <JsonLd data={[professionalServiceSchema, personSchema, websiteSchema]} />
         <Tracking />
         <ConsentBanner />
         {process.env.NODE_ENV === 'production' && <Analytics />}

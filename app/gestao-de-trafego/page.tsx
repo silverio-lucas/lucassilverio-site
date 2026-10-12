@@ -16,7 +16,8 @@ import {
   TRAFFIC_MIN_MONTHS,
   formatBRL,
 } from "@/lib/pricing"
-import { pageMetadata, whatsappUrl } from "@/lib/site-content"
+import { pageMetadata, whatsappUrl, faqSchema, serviceSchema } from "@/lib/site-content"
+import { JsonLd } from "@/components/json-ld"
 
 export const metadata = pageMetadata({
   title: "Gestão de tráfego para negócios locais | Lucas Silvério",
@@ -132,6 +133,16 @@ function ListCard({ title, items }: { title: string; items: string[] }) {
 export default function GestaoDeTrafegoPage() {
   return (
     <main id="conteudo" className="min-h-screen">
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: "Gestão de tráfego para negócios locais",
+            description: "Gestão de campanhas no Meta e no Google para negócios locais.",
+            path: "/gestao-de-trafego",
+          }),
+          faqSchema(FAQS),
+        ]}
+      />
       <Navbar />
 
       {/* Abertura */}
