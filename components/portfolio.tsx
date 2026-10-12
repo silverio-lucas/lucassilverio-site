@@ -44,7 +44,19 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group flex flex-col gap-4 rounded-2xl border border-border bg-card/30 p-6 transition-colors hover:border-accent/30 hover:bg-card/50 lg:col-span-1"
     >
-      <Thumb host={project.host} />
+      {project.thumbnail ? (
+        <div className="overflow-hidden rounded-xl border border-border bg-background/60">
+          <img
+            src={project.thumbnail}
+            alt={`Screenshot do site ${project.name}`}
+            className="h-auto w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ) : (
+        <Thumb host={project.host} />
+      )}
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{project.type}</p>
@@ -76,7 +88,7 @@ export function Portfolio() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Projetos no ar</h2>
+          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Sites no ar</h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Sites publicados para você abrir e conferir. Os projetos conceituais aparecem identificados como tal</p>
         </motion.div>
 

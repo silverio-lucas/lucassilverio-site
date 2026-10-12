@@ -8,8 +8,8 @@ export const PRICES = Object.freeze({
   page: 400,
   supabase: 500,
   googleBusiness: 500,
-  // Gestão mensal do Perfil da Empresa no Google: respostas a avaliações e 3 publicações por semana.
-  googleBusinessMonthly: 400,
+  // Gestão mensal do Perfil da Empresa no Google: respostas a avaliações, 3 publicações por semana e relatório semanal.
+  googleBusinessMonthly: 350,
   thankYou: 200,
   leadStorage: 500,
   crm: 500,

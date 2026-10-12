@@ -11,6 +11,8 @@ export interface PortfolioProject {
   host: string
   /** Projeto criado para demonstrar o trabalho, sem cliente real. É identificado como tal no site. */
   conceptual?: boolean
+  /** URL da imagem thumbnail do projeto. Se não fornecida, usa o Thumb placeholder. */
+  thumbnail?: string
 }
 
 export const PROJECTS: PortfolioProject[] = [
@@ -23,6 +25,7 @@ export const PROJECTS: PortfolioProject[] = [
       "Site conceitual de uma clínica odontológica, com tratamentos, o passo a passo da primeira visita, perguntas frequentes e agendamento demonstrativo.",
     url: "https://clara-odontologia.vercel.app",
     host: "clara-odontologia.vercel.app",
+    thumbnail: "/clara-odontologia-thumb.webp",
     conceptual: true,
   },
 ]

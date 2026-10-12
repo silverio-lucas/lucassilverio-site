@@ -12,39 +12,39 @@ import { PRICES, TRAFFIC_MIN_MONTHS, formatBRL } from "@/lib/pricing"
 const faqs = [
   {
     question: "Você trabalha sozinho?",
-    answer: "Sim. Trabalho diretamente em cada projeto para manter qualidade, comunicação simples e entregas consistentes.",
+    answer: "Sim. Trabalho diretamente em cada projeto para manter qualidade, comunicação simples e entregas consistentes, do primeiro contato aos relatórios.",
   },
   {
-    question: "Quanto tempo leva para criar um site?",
-    answer: "Sites e landing pages ficam prontos em até 10 dias úteis. O prazo começa a contar quando o briefing está fechado e eu recebo os textos e as imagens, e pode variar com o número de páginas, as integrações e a rapidez das aprovações. A data fica definida na proposta.",
+    question: "Como funciona o posicionamento digital?",
+    answer: "Começo com um diagnóstico: analisamos seu mercado, concorrentes e oportunidades. Depois, desenhamos a estratégia: se é site, tráfego, Perfil no Google ou uma combinação. Cada ferramenta tem seu tempo — sites ficam prontos em até 10 dias úteis, campanhas precisam de meses de aprendizado. Tudo sai documentado na proposta.",
   },
   {
-    question: "Você faz sites em WordPress?",
-    answer: "Não. Utilizo tecnologias modernas como Next.js e React que oferecem melhor performance, segurança e escalabilidade que o WordPress. Isso resulta em sites mais rápidos e com melhor SEO.",
+    question: "Preciso de um site para começar?",
+    answer: "Não necessariamente. Se você tem pouco orçamento ou quer começar rápido, o Perfil da Empresa no Google (Google Meu Negócio) já posiciona você nas buscas locais e é mais rápido de montar. O site entra quando há verba ou quando você quer expandir para buscas em todo o Brasil. A gestão de tráfego funciona com ou sem site.",
   },
   {
-    question: "Como funciona o suporte após a entrega?",
-    answer: "O que entra de suporte e ajustes depois da entrega fica definido na proposta, para que não haja surpresa para nenhum dos lados.",
-  },
-  {
-    question: "Posso atualizar o conteúdo do site sozinho?",
-    answer: "Posso incluir um painel para você editar textos e conteúdos, ou fazer as atualizações por você. Definimos isso no escopo do projeto.",
-  },
-  {
-    question: "Quais integrações estão incluídas?",
-    answer: "WhatsApp, Google Analytics, Meta Pixel e Microsoft Clarity, com eventos nos cliques de contato. Integrações extras entram no orçamento.",
-  },
-  {
-    question: "O site será otimizado para Google?",
-    answer: "Todo site sai com SEO técnico: velocidade otimizada, estrutura semântica, meta tags e sitemap. Para buscas locais, posso configurar também o Google Meu Negócio.",
+    question: "O que entra no site?",
+    answer: "Página principal com apresentação da empresa, serviços, benefícios e canais de contato. Você define o número de páginas internas. Todos os sites saem com WhatsApp integrado, Google Analytics, Meta Pixel, Microsoft Clarity, velocidade otimizada, estrutura SEO técnico e sitemap. O conteúdo pode ser gerenciado por você através de um painel, ou por mim — escolhemos no escopo.",
   },
   {
     question: "Como funciona a gestão de tráfego?",
-    answer: `Eu estruturo e administro as suas campanhas no Meta, no Google ou nos dois, conforme o seu negócio, o seu objetivo e a verba disponível, e envio um relatório mensal. A gestão parte de ${formatBRL(PRICES.trafficSingle)} por mês com um canal e de ${formatBRL(PRICES.trafficCombined)} com Meta e Google. A verba dos anúncios vai direto para as plataformas e não entra na mensalidade. Os criativos podem ser enviados por você ou produzidos por mim, a ${formatBRL(PRICES.trafficCreative)} cada.`,
+    answer: `Eu estruturo e administro as suas campanhas no Meta, no Google ou nos dois, conforme o seu negócio, o seu objetivo e a verba disponível. Você recebe relatório semanal simples e relatório mensal detalhado. A gestão começa em ${formatBRL(PRICES.trafficSingle)} com um canal e ${formatBRL(PRICES.trafficCombined)} com Meta e Google. A verba dos anúncios é separada: vai direto para as plataformas. Criativos saem de você ou produzidos por mim, a ${formatBRL(PRICES.trafficCreative)} cada.`,
+  },
+  {
+    question: "Como funciona o Perfil da Empresa no Google?",
+    answer: `Configuramos e otimizamos seu perfil para máxima visibilidade no Google Maps e nas buscas locais. Depois, gerencio atualizações, fotos, horários, respostas a clientes e relatórios semanais. Sai a partir de ${formatBRL(PRICES.googleBusiness)} de instalação, depois ${formatBRL(PRICES.googleBusinessMonthly)}/mês com gestão contínua. Tem compromisso mínimo de 6 meses para consolidar.`,
   },
   {
     question: "A gestão de tráfego tem prazo mínimo? Você garante resultados?",
-    answer: `O compromisso mínimo é de ${TRAFFIC_MIN_MONTHS} meses, porque as campanhas precisam de tempo de aprendizado para dar resultado. Não prometo número de vendas ou de contatos: o resultado depende da oferta, da verba, do mercado e da capacidade de atendimento do negócio.`,
+    answer: `O compromisso mínimo é de ${TRAFFIC_MIN_MONTHS} meses, porque as campanhas precisam de tempo de aprendizado para dar resultado. Não prometo número de vendas ou de contatos: o resultado depende da oferta, da verba, do mercado e da capacidade de atendimento do seu negócio. Trabalho com dados — ajustes vêm de relatórios e testes.`,
+  },
+  {
+    question: "Como você acompanha os resultados?",
+    answer: "Tudo é monitorado através de dados: Google Analytics, Meta Pixel, performance de campanhas. Você recebe relatórios semanais com resumo das ações e relatórios mensais detalhados com análise estratégica. Nos 1-1s mensais, a gente revisa números, aprova ajustes e planeja os próximos passos.",
+  },
+  {
+    question: "Vocês atendem empresas em outros estados?",
+    answer: "Sim. Atendo o Vale do Aço presencialmente, mas trabalho de forma remota com empresas em todo o Brasil. Não há diferença em qualidade ou tempo de resposta — é tudo online, com videochamadas para apresentações e acompanhamento.",
   },
 ]
 

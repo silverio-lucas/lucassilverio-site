@@ -23,7 +23,7 @@ const services = [
     description: "Para negócios locais aparecerem nos resultados do Google Maps e na Busca.",
     features: [
       { text: "Instalação e configuração completa", tooltip: "Otimização do perfil para máxima visibilidade" },
-      { text: `Gestão mensal: ${formatBRL(PRICES.googleBusinessMonthly)}/mês`, tooltip: "Atualizações, fotos, horário e respostas" },
+      { text: `Gestão mensal: ${formatBRL(PRICES.googleBusinessMonthly)}/mês`, tooltip: "Atualizações, fotos, horário, respostas e relatório semanal" },
       { text: "Integração com o site (opcional)", tooltip: null },
       { text: "Analytics do perfil", tooltip: "Visualizações, buscas e chamadas" },
       { text: "Compromisso mínimo de 6 meses", tooltip: "Para consolidar a presença e aproveitar ao máximo o perfil" },
@@ -40,7 +40,7 @@ const services = [
     features: [
       { text: "Estruturação de campanhas e públicos", tooltip: null },
       { text: "Gestão em Meta Ads e Google Ads", tooltip: null },
-      { text: "Acompanhamento e relatório mensal", tooltip: null },
+      { text: "Relatório semanal + acompanhamento e relatório mensal", tooltip: null },
       { text: "Diagnóstico estratégico dos canais", tooltip: "Recomendação de Meta, Google ou os dois conforme o negócio" },
       { text: `Compromisso mínimo de ${TRAFFIC_MIN_MONTHS} meses`, tooltip: "Campanhas precisam de tempo de aprendizado para dar resultado" },
     ],
@@ -84,7 +84,7 @@ export function Pricing() {
             Serviços
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Do site ao anúncio, conforme o momento do seu negócio
+            Apareça no Google, atraia clientes e consolide sua presença
           </p>
         </motion.div>
 
