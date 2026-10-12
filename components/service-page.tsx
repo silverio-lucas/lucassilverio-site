@@ -220,7 +220,7 @@ export function ServicePage({
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{closing}</h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            {simulate ? "Simule o orçamento agora ou me chame no WhatsApp. Sem compromisso." : "Me chame no WhatsApp para conversar. Sem compromisso."}
+            {simulate ? "Simule o orçamento agora ou me chame no WhatsApp. A primeira conversa é sem compromisso." : "Me chame no WhatsApp para conversar. A primeira conversa é sem compromisso."}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             {simulate && (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { PRICES, formatBRL } from "@/lib/pricing"
 
 export const WHATSAPP_NUMBER = "5531935033407"
 export const WHATSAPP_MESSAGE = "Olá, Lucas! Vi seu site e quero conversar sobre o meu projeto."
@@ -20,12 +21,11 @@ export function getWhatsAppNumber() {
   return WHATSAPP_NUMBER
 }
 
-export const SITE_URL = "https://www.lucassilverio.dev"
+export const SITE_URL = "https://www.lucassilverio.com.br"
 
 export const seo = {
   title: "Lucas Silvério — Posicionamento Digital | Sites, landing pages e tráfego",
-  description:
-    "Sites, landing pages e gestão de tráfego para negócios locais. Landing pages a partir de R$ 1.200, sites a partir de R$ 2.000 e tráfego a partir de R$ 1.000/mês.",
+  description: `Sites, landing pages e gestão de tráfego para negócios locais. Landing pages a partir de ${formatBRL(PRICES.landingPage)}, sites a partir de ${formatBRL(PRICES.base)} e tráfego a partir de ${formatBRL(PRICES.trafficSingle)}/mês.`,
 }
 
 // Injetado em app/layout.tsx como JSON-LD

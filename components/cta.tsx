@@ -25,7 +25,7 @@ export function CTA() {
             Vamos conversar sobre o seu projeto?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Me chame no WhatsApp. Sem compromisso.
+            Me chame no WhatsApp. A primeira conversa é sem compromisso.
           </p>
         </motion.div>
 

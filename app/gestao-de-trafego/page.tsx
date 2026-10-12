@@ -293,7 +293,7 @@ export default function GestaoDeTrafegoPage() {
             Quer saber qual operação faz sentido para o seu negócio?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Simule a gestão agora ou me chame no WhatsApp. Sem compromisso.
+            Simule a gestão agora ou me chame no WhatsApp. A primeira conversa é sem compromisso.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <TrackedButton href="/orcamento?tipo=trafego" event="trafego_cta_final">

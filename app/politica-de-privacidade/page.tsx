@@ -32,7 +32,7 @@ export default function PoliticaDePrivacidadePage() {
         </h1>
         <p className="mt-4 text-sm text-muted-foreground">Última atualização: 5 de outubro de 2026.</p>
         <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
-          Esta política explica como o site lucassilverio.dev trata dados pessoais, de acordo com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018). O responsável pelo tratamento é Lucas Silvério, que atua como Lucas Silvério — Posicionamento Digital, em Ipatinga (MG).
+          Esta política explica como o site lucassilverio.com.br trata dados pessoais, de acordo com a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018). O responsável pelo tratamento é Lucas Silvério, que atua como Lucas Silvério — Posicionamento Digital, em Ipatinga (MG).
         </p>
 
         <div className="mt-12 space-y-12">
