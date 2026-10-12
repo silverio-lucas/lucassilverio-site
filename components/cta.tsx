@@ -8,7 +8,7 @@ import { track } from "@/lib/track"
 
 export function CTA() {
   return (
-    <section id="cta" className="relative py-24">
+    <section id="cta" className="relative overflow-hidden py-24">
       {/* Accent glow */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[120px]" />

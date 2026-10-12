@@ -13,7 +13,7 @@ import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <main id="conteudo" className="min-h-screen">
+    <main id="conteudo" className="min-h-screen overflow-x-clip">
       <Navbar />
       <Hero />
       <Problem />
