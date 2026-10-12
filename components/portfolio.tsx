@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
-import { PORTFOLIO_URL, PROJECTS, type PortfolioProject } from "@/lib/portfolio"
+import { PROJECTS, type PortfolioProject } from "@/lib/portfolio"
 import { track } from "@/lib/track"
 
 function Thumb({ host }: { host: string }) {
@@ -51,6 +51,20 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             decoding="async"
           />
         </div>
+      ) : project.livePreview ? (
+        <div
+          className="relative aspect-[1482/678] overflow-hidden rounded-xl border border-border bg-background/60"
+          aria-hidden="true"
+        >
+          <iframe
+            src={project.url}
+            title={`Prévia de ${project.name}`}
+            loading="lazy"
+            tabIndex={-1}
+            scrolling="no"
+            className="pointer-events-none absolute left-0 top-0 h-[400%] w-[400%] origin-top-left scale-[0.25] border-0"
+          />
+        </div>
       ) : (
         <Thumb host={project.host} />
       )}
@@ -93,27 +107,6 @@ export function Portfolio() {
           {PROJECTS.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-
-          <motion.a
-            href={PORTFOLIO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => track("portfolio_completo")}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: PROJECTS.length * 0.1 }}
-            className="group flex flex-col rounded-2xl border border-border bg-card/30 p-6 transition-colors hover:border-accent/30 hover:bg-card/50"
-          >
-            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Portfólio completo</p>
-            <h3 className="mt-2 text-xl font-semibold text-foreground">Mais projetos e estudos</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Veja outros trabalhos, processos e experimentos no portfólio.</p>
-            <span className="mt-auto flex items-center justify-between border-t border-border/60 pt-4 text-xs text-muted-foreground">
-              Abre em uma nova aba
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </span>
-          </motion.a>
-
         </div>
       </div>
     </section>

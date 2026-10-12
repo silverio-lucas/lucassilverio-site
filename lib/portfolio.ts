@@ -13,6 +13,8 @@ export interface PortfolioProject {
   conceptual?: boolean
   /** URL da imagem thumbnail do projeto. Se não fornecida, usa o Thumb placeholder. */
   thumbnail?: string
+  /** Sem thumbnail, mostra uma prévia ao vivo da própria página (iframe reduzido, sem interação). */
+  livePreview?: boolean
 }
 
 export const PROJECTS: PortfolioProject[] = [
@@ -37,6 +39,7 @@ export const PROJECTS: PortfolioProject[] = [
       "Landing page conceitual de uma clínica odontológica premium, com visual claro, tratamentos em destaque e chamada direta para agendamento.",
     url: "https://sorriso-studio-seven.vercel.app",
     host: "sorriso-studio-seven.vercel.app",
+    livePreview: true,
     conceptual: true,
   },
   {
@@ -48,6 +51,7 @@ export const PROJECTS: PortfolioProject[] = [
       "Landing page conceitual de um escritório de advocacia, em tema escuro com detalhes dourados, áreas de atuação e contato para consulta.",
     url: "https://monteiro-vasconcelos.vercel.app",
     host: "monteiro-vasconcelos.vercel.app",
+    livePreview: true,
     conceptual: true,
   },
 ]
