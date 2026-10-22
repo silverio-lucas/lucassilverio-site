@@ -72,7 +72,9 @@ export function Tracking() {
       )}
 
       {clarity && (
-        <Script id="clarity" strategy="afterInteractive">{`
+        // O id do <script> não pode ser "clarity": o navegador expõe elementos com id como
+        // propriedade de window, e isso sobrescreve window.clarity e quebra o tag do Clarity.
+        <Script id="ms-clarity-init" strategy="afterInteractive">{`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
